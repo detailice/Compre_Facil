@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compra Fácil — Carrinho Inteligente</title>
+<style>
+*{box-sizing:border-box}
+:root{--green:#43e4ae;--green2:#18c6a0;--blue:#2560d7;--blue2:#1742a5;--ink:#17243a;--muted:#596979;--line:#dce7ec;--soft:#f3f8fa;--white:#fff}
+body{margin:0;background:#eaf1f4;font-family:Arial,Helvetica,sans-serif;color:var(--ink);padding:24px}
+.app{max-width:1100px;margin:auto;background:#fff;border-radius:26px;overflow:hidden;box-shadow:0 16px 50px rgba(26,64,105,.15)}
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 28px;border-bottom:1px solid var(--line);gap:18px}
+.brand{display:flex;align-items:center;gap:14px}
+.logo{width:82px;height:62px;position:relative}
+.cart{position:absolute;left:12px;top:21px;width:43px;height:25px;background:linear-gradient(160deg,var(--green),var(--blue));border-radius:4px 12px 4px 10px;transform:skew(-8deg)}
+.handle{position:absolute;left:4px;top:11px;width:25px;height:7px;border-radius:8px;background:var(--green);transform:rotate(2deg)}
+.handle:after{content:"";position:absolute;right:-8px;top:5px;width:7px;height:20px;background:var(--green);transform:rotate(-12deg)}
+.wheel{position:absolute;top:50px;width:11px;height:11px;border-radius:50%;background:var(--blue)}
+.w1{left:25px}.w2{left:57px}
+.wave{position:absolute;border:6px solid var(--blue);border-left-color:transparent;border-top-color:transparent;border-bottom-color:transparent;border-radius:50%;transform:rotate(0deg)}
+.a{width:27px;height:40px;left:48px;top:9px}.b{width:40px;height:54px;left:47px;top:2px}
+.brand h1{margin:0;font-size:25px}.brand p{margin:4px 0 0;color:var(--muted)}
+.tools{display:flex;gap:9px}.btn{border:0;border-radius:14px;padding:13px 16px;font-size:16px;font-weight:700;cursor:pointer;min-height:48px}
+.btn:focus,input:focus,.card:focus{outline:4px solid #ffbf47;outline-offset:3px}
+.light{background:#edf4ff;color:var(--blue2)}
+main{padding:28px}
+.hero{display:grid;grid-template-columns:1.4fr .6fr;gap:24px;align-items:center;padding:28px;border:2px solid #d9f0eb;border-radius:23px;background:linear-gradient(135deg,#eafff7,#eef4ff)}
+.hero h2{font-size:35px;margin:0 0 10px}.hero p{font-size:18px;line-height:1.5;margin:0 0 20px}
+.search{display:flex;gap:9px;background:#fff;border:2px solid #cadde5;border-radius:17px;padding:7px}
+.search input{flex:1;border:0;padding:12px;font-size:18px;min-width:0}
+.primary{background:linear-gradient(135deg,var(--green2),var(--blue));color:#fff;padding-left:22px;padding-right:22px}
+.voice{text-align:center;background:#fff;border:2px solid var(--line);border-radius:21px;padding:22px}
+.mic{display:grid;place-items:center;width:88px;height:88px;margin:0 auto 13px;border:0;border-radius:50%;font-size:38px;background:linear-gradient(150deg,var(--green),var(--blue));color:#fff;cursor:pointer}
+.voice strong{font-size:19px}.voice p{font-size:15px;margin:7px 0 0}
+h2.section{font-size:23px;margin:28px 0 14px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{text-align:left;background:#fff;border:2px solid var(--line);border-radius:19px;padding:20px;cursor:pointer;color:var(--ink)}
+.card .ico{font-size:28px;width:52px;height:52px;display:grid;place-items:center;background:#e9fff7;border-radius:14px;margin-bottom:12px}
+.card h3{font-size:20px;margin:0 0 7px}.card p{font-size:15px;line-height:1.45;color:var(--muted);margin:0}
+.status{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:19px;padding:18px 20px;border-radius:18px;background:var(--soft)}
+.status strong{font-size:18px}.status span{display:block;color:var(--muted);margin-top:5px}
+.badge{white-space:nowrap;padding:9px 12px;border-radius:99px;background:#dffbf1;color:#087a65;font-weight:700}
+footer{padding:0 28px 24px;color:var(--muted);font-size:14px}
+.contrast{background:#000;color:#fff}.contrast .app,.contrast header,.contrast main{background:#000;color:#fff}.contrast .hero,.contrast .voice,.contrast .card,.contrast .status{background:#111;color:#fff;border-color:#fff}.contrast p,.contrast span{color:#fff!important}
+@media(max-width:760px){body{padding:0}.app{border-radius:0}.tools{display:none}.hero{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.search{flex-direction:column}main{padding:18px}.hero h2{font-size:29px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="brand">
+    <div class="logo" aria-hidden="true"><div class="handle"></div><div class="cart"></div><div class="wheel w1"></div><div class="wheel w2"></div><div class="wave a"></div><div class="wave b"></div></div>
+    <div><h1>Compra Fácil</h1><p>Navegação acessível no supermercado</p></div>
+  </div>
+  <div class="tools">
+    <button class="btn light" onclick="bigger()">A+ Texto</button>
+    <button class="btn light" onclick="contrast()">◐ Contraste</button>
+    <button class="btn light" onclick="readPage()">🔊 Ouvir</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div>
+    <h2>O que você procura?</h2>
+    <p>Digite ou fale o nome de um produto. O carrinho mostra onde ele está e orienta você por uma rota simples e acessível.</p>
+    <div class="search">
+      <input id="product" type="text" placeholder="Ex.: arroz, leite, sabonete..." aria-label="Nome do produto">
+      <button class="btn primary" onclick="findProduct()">Encontrar produto</button>
+    </div>
+  </div>
+  <div class="voice">
+    <button class="mic" onclick="voice()" aria-label="Pesquisar por voz">🎙</button>
+    <strong>Prefere falar?</strong>
+    <p>Toque no microfone e diga o produto que deseja encontrar.</p>
+  </div>
+</section>
+
+<h2 class="section">Ações rápidas</h2>
+<section class="cards">
+  <button class="card" onclick="action('list')"><div class="ico">📝</div><h3>Minha lista</h3><p>Organize os itens para fazer menos deslocamentos pela loja.</p></button>
+  <button class="card" onclick="action('route')"><div class="ico">♿</div><h3>Rota acessível</h3><p>Prioriza corredores amplos, caminhos simples e menor deslocamento.</p></button>
+  <button class="card" onclick="action('help')"><div class="ico">🙋</div><h3>Pedir ajuda</h3><p>Solicite apoio de um funcionário com apenas um toque.</p></button>
+</section>
+
+<section class="status" aria-live="polite">
+ <div><strong id="title">Você está na entrada da loja</strong><span id="desc">Pesquise um produto para iniciar sua rota.</span></div>
+ <div class="badge" id="badge">Pronto para começar</div>
+</section>
+</main>
+<footer>Protótipo acadêmico • Interface com linguagem simples, botões grandes, alto contraste e suporte por voz.</footer>
+</div>
+
+<script>
+let size=16;
+function bigger(){size=size>=22?16:size+2;document.documentElement.style.fontSize=size+"px"}
+function contrast(){document.body.classList.toggle("contrast")}
+function say(t){if("speechSynthesis" in window){speechSynthesis.cancel();speechSynthesis.speak(new SpeechSynthesisUtterance(t))}}
+function readPage(){say("Bem-vindo ao Compra Fácil. Pesquise um produto, escolha uma rota acessível, veja sua lista ou peça ajuda.")}
+function voice(){say("Diga o nome do produto que deseja encontrar.")}
+function findProduct(){
+ let p=document.getElementById("product").value.trim()||"Produto";
+ document.getElementById("title").textContent=p.charAt(0).toUpperCase()+p.slice(1)+" encontrado";
+ document.getElementById("desc").textContent="Siga em frente até o corredor 4. A rota prioriza o menor deslocamento.";
+ document.getElementById("badge").textContent="Corredor 4 • 2 min";
+ say(p+" encontrado. Siga em frente até o corredor quatro.");
+}
+function action(x){
+ let t="",d="";
+ if(x==="list"){t="Minha lista";d="Os produtos serão organizados para reduzir o deslocamento pela loja."}
+ if(x==="route"){t="Rota acessível ativada";d="Vamos priorizar corredores amplos e caminhos com menor deslocamento."}
+ if(x==="help"){t="Ajuda solicitada";d="Um funcionário poderá auxiliar você durante a compra."}
+ document.getElementById("title").textContent=t;document.getElementById("desc").textContent=d;document.getElementById("badge").textContent="Selecionado";
+}
+</script>
+</body>
+</html>
