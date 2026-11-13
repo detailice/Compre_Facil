@@ -1,6 +1,9 @@
 # Compre_Facil
 Repositório dedicado ao projeto de Gestão Ágil, ministrado pelo docente Alexandre, realizado no segundo semestre de 2026. Sistema de navegação inteligente integrado a carrinhos de supermercado que utiliza localização interna para auxiliar os usuários durante suas compras.
 
+#### Integrantes deste projeto:
+Alice de Lima — RGM 47612614, Gabriela Porfirio — RGM 48017698, Henrico Saltanian — RGM 476981721, Henrique Moura — RGM 47610972, Laura Sophia da Silva — RGM 48128406, Lucas Praxedes — RGM 47832550, Nicole Xavier — RGM 48329002, Paulo Ricardo Freitas — RGM 47917687, Tarcisio Santos — RGM 47913061, Thiago Barbante — RGM 47856564.
+
 
 ## 📋 Sobre o Projeto
 
